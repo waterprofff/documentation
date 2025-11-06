@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Runxin — Клапаны управления | Документация</title>
+  <meta name="description" content="Сводная страница по клапанам управления Runxin: серии, особенности, подбор, документация и FAQ." />
+  <style>
+    :root{
+      --bg:#0b1020;        /* тёмный фон шапки/футера */
+      --txt:#11131a;       /* основной текст */
+      --muted:#6b7280;     /* приглушённый текст */
+      --card:#ffffff;      /* фон карточек */
+      --ui:#eef2f7;        /* фон страницы */
+      --primary:#2563eb;   /* акцент */
+      --primary-2:#1d4ed8; /* hover */
+      --ring:rgba(37,99,235,.35);
+      --ok:#16a34a; --warn:#f59e0b; --danger:#ef4444;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color:var(--txt); background:var(--ui)}
+    a{color:var(--primary); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1200px; margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:50; background:linear-gradient(180deg, var(--bg), #0b1020ef 60%, transparent);
+      color:white; border-bottom:1px solid rgba(255,255,255,.08); backdrop-filter:saturate(140%) blur(6px);
+    }
+    .topbar{display:flex; align-items:center; gap:14px; padding:18px 0}
+    .logo{display:flex; gap:10px; align-items:center}
+    .logo .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#22d3ee)}
+    .logo b{font-weight:700; letter-spacing:.3px}
+    .search{margin-left:auto; position:relative; width:min(420px,48vw)}
+    .search input{width:100%; border-radius:999px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08); color:#fff; padding:11px 44px 11px 14px; outline:none}
+    .search input::placeholder{color:#c9d1e5}
+    .search svg{position:absolute; right:12px; top:50%; transform:translateY(-50%); opacity:.85}
+
+    nav.breadcrumbs{font-size:.9rem; color:#c9d1e5; padding:8px 0 16px}
+    nav.breadcrumbs a{color:#c9d1e5}
+    nav.breadcrumbs .sep{opacity:.65; margin:0 6px}
+
+    .layout{display:grid; grid-template-columns:280px 1fr; gap:28px}
+    @media (max-width: 980px){.layout{grid-template-columns:1fr}}
+
+    .sidebar{position:sticky; top:86px; align-self:start}
+    .toc{background:var(--card); border:1px solid #e5e7eb; padding:14px; border-radius:var(--radius)}
+    .toc h4{margin:6px 0 8px; font-size:1rem}
+    .toc a{display:flex; align-items:center; gap:8px; padding:9px 10px; margin:2px 0; border-radius:10px; color:#111827}
+    .toc a:hover{background:#f3f4f6}
+
+    .hero{background:linear-gradient(160deg,#f6f8ff,#eef7ff 40%, #f6fff9 100%); border:1px solid #e5e7eb; border-radius:18px; padding:26px}
+    .hero h1{margin:4px 0 10px; font-size:clamp(24px,3.4vw,38px)}
+    .hero p{margin:0; color:#334155; max-width:72ch}
+
+    .section{margin:28px 0}
+    .section h2{font-size:clamp(20px,2.6vw,28px); margin:0 0 10px}
+    .section p.lead{color:#374151; margin:-4px 0 16px}
+
+    .card-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .card{grid-column:span 4; background:var(--card); border:1px solid #e5e7eb; border-radius:16px; padding:16px; transition:transform .12s ease, box-shadow .12s ease}
+    .card:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(2,6,23,.06)}
+    .card h3{margin:4px 0 8px; font-size:1.05rem}
+    .card p{margin:0; color:#4b5563}
+    .badge{display:inline-flex; align-items:center; gap:6px; font-size:.8rem; background:#eef2ff; color:#3730a3; border-radius:999px; padding:4px 10px; border:1px solid #c7d2fe}
+    @media (max-width: 980px){.card{grid-column:span 6}}
+    @media (max-width: 640px){.card{grid-column:span 12}}
+
+    .feature{display:flex; gap:14px; align-items:flex-start}
+    .feature .dot{width:14px; height:14px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 6px rgba(37,99,235,.12)}
+
+    .callout{border-left:4px solid var(--primary); background:#f1f5ff; padding:12px 14px; border-radius:10px; color:#1f2a44}
+
+    .compare{width:100%; border-collapse:separate; border-spacing:0; background:var(--card); border:1px solid #e5e7eb; border-radius:16px; overflow:hidden}
+    .compare th, .compare td{padding:12px 14px; text-align:left; border-bottom:1px solid #eef0f3}
+    .compare th{background:#f8fafc; font-weight:600}
+    .compare tr:last-child td{border-bottom:none}
+
+    .docs{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .doc{grid-column:span 6; background:var(--card); border:1px solid #e5e7eb; border-radius:16px; padding:16px}
+    .doc h4{margin:0 0 6px}
+    .doc p{margin:0 0 12px; color:#4b5563}
+    .doc .actions{display:flex; gap:8px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:var(--primary); color:#fff; border:1px solid var(--primary); cursor:pointer}
+    .btn:hover{background:var(--primary-2)}
+    .btn.secondary{background:#f8fafc; color:#0f172a; border-color:#e5e7eb}
+    .btn.secondary:hover{background:#eef2f7}
+
+    details{background:var(--card); border:1px solid #e5e7eb; border-radius:14px; padding:12px 16px}
+    details+details{margin-top:10px}
+    details summary{cursor:pointer; font-weight:600}
+
+    footer{margin:48px 0 24px; color:#64748b; font-size:.92rem}
+
+    .tag{display:inline-flex; gap:6px; align-items:center; font-size:.8rem; color:#334155; background:#f1f5f9; border:1px solid #e2e8f0; padding:6px 10px; border-radius:999px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar" role="banner">
+      <a href="#" class="logo" aria-label="На главную">
+        <span class="mark" aria-hidden="true"></span>
+        <span><b>Документация</b> · Водоподготовка</span>
+      </a>
+      <div class="search" role="search">
+        <input type="search" placeholder="Поиск по клапанам, сериям и моделям…" aria-label="Поиск" />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="white" stroke-width="2"/></svg>
+      </div>
+    </div>
+    <nav class="container breadcrumbs" aria-label="Хлебные крошки">
+      <a href="#">Главная</a>
+      <span class="sep">/</span>
+      <a href="#">Клапаны управления</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Runxin</span>
+    </nav>
+  </header>
+
+  <main class="container layout" id="content">
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Навигация по странице">
+      <div class="toc">
+        <h4>На этой странице</h4>
+        <nav>
+          <a href="#overview">Обзор</a>
+          <a href="#series">Серии и применение</a>
+          <a href="#sizing">Подбор и сравнение</a>
+          <a href="#documents">Документация</a>
+          <a href="#programming">Программирование P‑Series</a>
+          <a href="#faq">Частые вопросы</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main column -->
+    <section>
+      <div class="hero" id="overview">
+        <span class="badge" title="Производитель">Runxin · Multi‑port Valves</span>
+        <h1>Клапаны управления Runxin</h1>
+        <p>Сводная страница по клапанам управления Runxin для систем фильтрации и умягчения. Ниже собраны основные серии, ключевые особенности, рекомендации по подбору, а также ссылки на руководства и схемы подключения.</p>
+      </div>
+
+      <div class="section">
+        <h2>Ключевые особенности</h2>
+        <div class="feature"><span class="dot"></span><div>
+          <b>Надёжная конструкция.</b> Корпус и узлы рассчитаны на работу в системах водоподготовки с автоматическими циклами обратной промывки и регенерации.
+        </div></div>
+        <div class="feature"><span class="dot"></span><div>
+          <b>Широкая линейка.</b> Модели для фильтров, умягчителей, непрерывной подачи, плавающего слоя и др.; ручные и автоматические версии.
+        </div></div>
+        <div class="feature"><span class="dot"></span><div>
+          <b>Гибкое управление.</b> Таймерные и объёмные (по ресурсу) режимы, варианты контроллеров P/Q‑серий.
+        </div></div>
+        <p class="callout" role="note">Эта страница — шаблон: заполните параметры под ваши изделия (модели, диаметры, производительность) и приложите актуальные PDF‑файлы.</p>
+      </div>
+
+      <div class="section" id="series">
+        <h2>Серии и области применения</h2>
+        <p class="lead">Ниже — быстрый обзор основных семейств. Откройте карточку, чтобы перейти к документации и типовым применениям.</p>
+        <div class="card-grid">
+          <article class="card">
+            <span class="tag">Q Series · Таймер/объём</span>
+            <h3>Автоматические клапаны для умягчителей</h3>
+            <p>Типовые модели: F67, F71, F95, F112 и др. Режимы регенерации по времени или ресурсу.</p>
+          </article>
+          <article class="card">
+            <span class="tag">P Series · Контроллер</span>
+            <h3>Автоматические клапаны с контроллером P</h3>
+            <p>Расширенные настройки циклов, дополнительные параметры и интерфейс управления.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Filter</span>
+            <h3>Автоматические фильтровальные клапаны</h3>
+            <p>Для загрузок: кварцевый песок, активированный уголь, Birm/Greensand и др. Поддержка обратной промывки.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Manual</span>
+            <h3>Ручные клапаны</h3>
+            <p>Простые решения с ручным переключением фаз. Подходят для небольших систем, сервисных работ.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Continuous</span>
+            <h3>Непрерывная подача (два бака)</h3>
+            <p>Схема «один в работе — один в резерве» для непрерывного водоснабжения.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Floating Bed</span>
+            <h3>Клапаны для плавающего слоя</h3>
+            <p>Управление фильтрами с псевдоожиженным (плавающим) слоем загрузки.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Disk Filter</span>
+            <h3>Дисковые фильтры</h3>
+            <p>Компактные решения предварительной очистки и защиты оборудования.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Accessories</span>
+            <h3>Аксессуары и узлы</h3>
+            <p>Солевые баки, байпас‑клапаны, комплектующие для монтажа и сервиса.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="section" id="sizing">
+        <h2>Подбор и сравнение</h2>
+        <p class="lead">Сверьте пропускную способность и присоединительные размеры с характеристиками вашей системы.</p>
+        <table class="compare" role="table" aria-label="Сравнение типовых моделей">
+          <thead>
+            <tr>
+              <th>Модель</th>
+              <th>Назначение</th>
+              <th>Присоединение</th>
+              <th>Макс. расход, м³/ч</th>
+              <th>Питание</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>F67 (Q/P)</td>
+              <td>Умягчитель, объём/таймер</td>
+              <td>1"</td>
+              <td>2.0–4.0</td>
+              <td>~220 В AC</td>
+            </tr>
+            <tr>
+              <td>F71 (Q/P)</td>
+              <td>Умягчитель/фильтр</td>
+              <td>1"</td>
+              <td>4.0–6.0</td>
+              <td>~220 В AC</td>
+            </tr>
+            <tr>
+              <td>F95 / F112</td>
+              <td>Повышенная производительность</td>
+              <td>1½"–2"</td>
+              <td>8.0–15.0</td>
+              <td>~220 В AC</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="color:var(--muted); margin:10px 0 0">* Значения приведены как ориентир. Уточняйте по конкретным паспортам моделей.</p>
+      </div>
+
+      <div class="section" id="documents">
+        <h2>Документация</h2>
+        <p class="lead">Прикрепите актуальные руководства и каталоги. Ссылки ниже — примеры.</p>
+        <div class="docs">
+          <article class="doc">
+            <h4>Каталог Runxin (EN)</h4>
+            <p>Сводный каталог клапанов управления и аксессуаров.</p>
+            <div class="actions">
+              <a class="btn" href="https://cnchiwatec.com/wp-content/uploads/2024/06/RUNXIN-valve-catalog.pdf" target="_blank" rel="noopener">Скачать PDF</a>
+              <a class="btn secondary" href="#">Просмотреть онлайн</a>
+            </div>
+          </article>
+          <article class="doc">
+            <h4>Manual — F67/F71/F75 (EN)</h4>
+            <p>Инструкция по эксплуатации и настройке для популярных моделей.</p>
+            <div class="actions">
+              <a class="btn" href="https://www.manualslib.com/manual/3014234/Runxin-F56a.html" target="_blank" rel="noopener">Открыть</a>
+              <a class="btn secondary" href="#">Сохранить</a>
+            </div>
+          </article>
+          <article class="doc">
+            <h4>Manual — Q‑Series (EN)</h4>
+            <p>Руководство по автоматическим клапанам с регенерацией по объёму.</p>
+            <div class="actions">
+              <a class="btn" href="https://www.manualslib.com/manual/1977750/Runxin-55504.html" target="_blank" rel="noopener">Открыть</a>
+              <a class="btn secondary" href="#">Сохранить</a>
+            </div>
+          </article>
+          <article class="doc">
+            <h4>Контроллеры P‑серии</h4>
+            <p>Пояснения по пунктам меню программирования, режимы A‑01…A‑04.</p>
+            <div class="actions">
+              <a class="btn" href="#programming">К разделу</a>
+              <a class="btn secondary" href="#">Скачать PDF</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="section" id="programming">
+        <h2>Программирование P‑Series (пример)</h2>
+        <p class="lead">Ниже — примерная структура шагов. Замените на ваши актуальные инструкции.</p>
+        <ol>
+          <li><b>Выбор режима регенерации.</b> A‑01/02 — таймер; A‑03/04 — по объёму.</li>
+          <li><b>Задание единиц и времени.</b> Формат, дата, локальное время.</li>
+          <li><b>Параметры цикла.</b> Обратная промывка, солевой набор, медленная промывка и др.</li>
+          <li><b>Ресурс системы.</b> Укажите объём смолы/ресурс (для объёмного режима).</li>
+          <li><b>Сервисные настройки.</b> Режим регенерации вручную, блокировка, сигнализация.</li>
+        </ol>
+        <p class="callout">Совет: добавьте фото/схемы экранов контроллера и таблицу заводских значений.</p>
+      </div>
+
+      <div class="section" id="faq">
+        <h2>Частые вопросы</h2>
+        <details>
+          <summary>Как выбрать модель по расходу?</summary>
+          <p>Отталкивайтесь от номинального рабочего расхода вашей системы и требований к обратной промывке. Для фильтров важна скорость промывки слоя; для умягчителей — расход при сервисе и доступная скорость рассола.</p>
+        </details>
+        <details>
+          <summary>Чем отличаются Q и P‑серии?</summary>
+          <p>Обе поддерживают автоматические циклы; контроллер P‑серии обычно имеет расширенные меню и дополнительные параметры индикации/сервиса. Проверяйте конкретные паспорта.</p>
+        </details>
+        <details>
+          <summary>Какие требования к электропитанию?</summary>
+          <p>Большинство бытовых моделей питаются от ~220 В AC через адаптер (уточняйте для конкретного изделия). Для промышленных серий возможны другие варианты.</p>
+        </details>
+      </div>
+
+      <footer>
+        Обновите эту страницу вашими материалами и ссылками. © 2025
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
