@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P · Программирование</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-path="/p/programming.html">
+<header><div class="topbar"><div class="brand"><span class="mark"></span><span>Гейзер · Документация</span></div></div></header>
+<div class="container">
+  
+    <aside class="aside">
+      <nav class="nav">
+        <h4>Runxin</h4>
+        <div class="group">
+          <button type="button">Контроллер серии P <span>▾</span></button>
+          <ul style="display: block">
+            <li><a href='../p/index.html'>Обзор P</a></li>
+            <li><a href='../p/programming.html'>Программирование</a></li>
+            <li><a href='../p/errors.html'>Типы ошибок и причины</a></li>
+          </ul>
+        </div>
+        <div class="group">
+          <button type="button">Контроллер серии Q <span>▾</span></button>
+          <ul style="display: none">
+            <li><a href='../q/index.html'>Обзор Q</a></li>
+            <li><a href='../q/programming.html'>Программирование</a></li>
+            <li><a href='../q/errors.html'>Типы ошибок и причины</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    
+  <main>
+    <div class="breadcrumbs"><a href="../index.html">Главная</a> › Runxin › Контроллер серии P › Программирование</div>
+    
+<h1 class="title">Программирование — Контроллер серии P</h1>
+<div class="accordion">
+  <div class="acc-item open"><div class="acc-header"><div class="acc-icon">🔧</div><h3>Вход в режим программирования</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><ol>
+      <li><b>Разблокировка.</b> Удерживайте ▲ и ▼, пока не исчезнет символ ⚿ и не прозвучит сигнал.</li>
+      <li><b>Переход в меню.</b> Нажмите ↵ — появится значок 🔧 и активный параметр.</li>
+    </ol><div class="accent" style="margin-top:8px"><b>Навигация:</b> ▲/▼ — выбор, ↵ — подтверждение, ↼ — выход. Без действий 5 минут — возврат без сохранения.</div></div>
+  </div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">🕒</div><h3>Шаг 1 — Текущее время</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><ol><li>↵ → часы (мигают) → ▲/▼.</li><li>↵ → минуты → ▲/▼.</li><li>↵ для сохранения.</li></ol></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">♻️</div><h3>Шаг 2 — Тип регенерации</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><p>Рекомендуем <b>A‑01</b> или <b>A‑02</b>.</p><ul><li>A‑01 — отложенная по объёму</li><li>A‑02 — немедленная по объёму</li><li>A‑03 — отложенная по расчёту</li><li>A‑04 — немедленная по расчёту</li></ul></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">📏</div><h3>Шаг 3 — Единицы объёма</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><ul><li>HU‑01 — м³</li><li>HU‑02 — галлоны</li><li>HU‑03 — литры</li></ul></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">⏰</div><h3>Шаг 4 — Время регенерации</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><div class="accent">Для загородных домов — ночь, напр. 02:00.</div></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">🗓️</div><h3>Шаг 5 — Интервал между промывками</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><p>Доступно для: F68P, F69P, F65P, F63P.</p></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">📊</div><h3>Шаг 6 — Ресурс системы</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><p>Режим A‑01/02 — вручную; A‑03/04 — ввод объёма смолы, жёсткости и коэффициента.</p></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">🧩</div><h3>Шаг 7 — Длительности этапов</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><ul><li>2 — обратная промывка</li><li>3 — подача рассола</li><li>4 — заполнение рассолом</li><li>5 — быстрая промывка</li></ul></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">📆</div><h3>Шаг 8 — Дни до регенерации</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><p>Задайте максимальное число дней без регенерации.</p></div></div>
+  <div class="acc-item"><div class="acc-header"><div class="acc-icon">🔌</div><h3>Шаг 9 — Внешний сигнал</h3><span class="acc-chev">▶</span></div>
+    <div class="acc-panel"><ul><li>HU‑01 — постоянно в регенерации</li><li>HU‑02 — только при переключениях</li></ul></div></div>
+</div>
+
+  </main>
+</div>
+<footer>© 2025 «Гейзер». Статические страницы документации.</footer>
+<script src="../script.js"></script>
+</body>
+</html>
